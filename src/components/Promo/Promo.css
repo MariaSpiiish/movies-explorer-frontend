@@ -1,0 +1,30 @@
+.promo {
+    background-color: #073042;
+    height: 525px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('D:\dev\movies-explorer-frontend\src\images\landing-logo.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    letter-spacing: -0.04em;
+}
+
+.promo__title {
+    color: #fff;
+    font-size: 50px;
+    line-height: 1,2;
+    font-weight: 400;
+    margin: 0;
+    max-width: 730px;
+    text-align: center;
+}
+
+@media (max-width: 500px) {
+    .promo {
+        background-size: 248px 248px;
+    }
+    .promo__title {
+        font-size: 31px;
+    }
+}
