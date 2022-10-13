@@ -1,11 +1,14 @@
 .header {
    display: flex;
-   background-color: #073042;
    justify-content: space-between;
 }
 
+.header__menu-toggle {
+   display: none;
+}
+
 .header__logo {
-  margin: 18px 0 18px 70px;
+  margin: 18px 0 18px 0;
 }
 
 .header__links-container {
@@ -13,37 +16,61 @@
    display: flex;
    gap: 50px;
    padding: 0;
-   margin: 0 70px 0 0;
+   margin: 0;
 }
 
 .header__button {
-   color: #fff;
-   font-size: 12px;
+   color: #000;
+   font-size: 14px;
    line-height: 1,2;
-   font-weight: 500;
+   font-weight: 400;
    background-color: transparent;
    border: none;
    padding: 0;
-   margin-top: 29px;
+   text-decoration: none;
    cursor: pointer;
+   margin-top: 29px;
 }
 
-.header__button_type_active {
-   background-color: #2BE080;
-   border-radius: 3px;
-   padding: 8px 20px;
+.header__button:first-child {
+   font-weight: 500;
+}
+
+.header__movie-links {
+   display: flex;
+   gap: 20px;
+}
+
+.header__profile-link {
+   display: flex;
+   gap: 20px;
+}
+
+.header__profile-icon {
+   height: 30px;
+   width: 30px;
+   background: url('../../images/profile-icon.svg');
+   background-size: 10px 10px;
+   border-radius: 6px;
+   background-repeat: no-repeat;
+   background-position: center;
+   background-color: #F9F9F9;
    margin-top: 21px;
-   color: #000;
 }
 
 @media (max-width: 770px) {
-   .header__logo {
-      margin-left: 30px;
-   }
+   
    .header__links-container {
-      margin-right: 30px;
-      gap: 30px;
+      display: none;
    }
+   .header__menu-toggle {
+      display: block;
+      padding-top: 15px;
+   }
+   .header__toggle-image {
+      cursor: pointer;
+   }
+   
 }
 
 @media (max-width: 500px) {

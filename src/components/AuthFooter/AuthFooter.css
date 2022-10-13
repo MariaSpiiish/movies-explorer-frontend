@@ -1,0 +1,60 @@
+.auth-footer {
+    width: 396px;
+    padding: 70px 0;
+}
+
+.auth-footer__button {
+    background-color: #3456F3;
+    border-radius: 3px;
+    border: none;
+    color: #fff;
+    width: 396px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.1;
+    height: 45px;
+    cursor: pointer;
+}
+
+.auth-footer__link-container {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 16px;
+}
+
+.auth-footer__link-text {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: #A0A0A0;
+    margin: 0;
+}
+
+.auth-footer__link {
+    color: #3456F3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.1;
+    cursor: pointer;
+}
+
+@media (max-width: 550px) {
+    .auth-footer__button {
+        width: 260px;
+    }
+    .auth-footer {
+        width: 260px;
+    }
+    .auth-footer__link {
+        font-size: 12px;
+    }
+    .auth-footer__link-text {
+        font-size: 12px;
+    }
+    .auth-footer {
+        padding: 157px 0 59px;
+    }
+}
