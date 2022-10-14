@@ -32,7 +32,7 @@
 .search-form__input {
     border: none;
     background-color: #F9F9F9;
-    padding: 0;
+    padding: 6px 0 6px 2px;
     color: #A0A0A0;
     font-size: 18px;
     line-height: 1.1;
@@ -43,8 +43,12 @@
 .search-form__input:focus {
     border: 1px solid #3456F3;
     outline: none;
-    
 }
+
+.search-form__input:focus::-webkit-input-placeholder {color: transparent}
+.search-form__input:focus::-moz-placeholder          {color: transparent}
+.search-form__input:focus:-moz-placeholder           {color: transparent}
+.search-form__input:focus:-ms-input-placeholder      {color: transparent}
 
 .search-form__button {
     background-image: url('../../images/find-icon.svg');
