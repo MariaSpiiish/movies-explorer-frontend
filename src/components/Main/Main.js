@@ -4,7 +4,6 @@ import NavTab from '../NavTab/NavTab';
 import Portfolio from '../Portfolio/Portfolio';
 import Promo from '../Promo/Promo';
 import Techs from '../Techs/Techs';
-import Footer from '../Footer/Footer'
 
 function Main() {
     return (
@@ -15,7 +14,6 @@ function Main() {
             <Techs />
             <AboutMe />
             <Portfolio />
-            <Footer />
         </main>
     );
 }

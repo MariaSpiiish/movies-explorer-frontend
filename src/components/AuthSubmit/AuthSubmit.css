@@ -1,9 +1,9 @@
-.auth-footer {
+.auth-submit {
     width: 396px;
     padding: 70px 0;
 }
 
-.auth-footer__button {
+.auth-submit__button {
     background-color: #3456F3;
     border-radius: 3px;
     border: none;
@@ -17,14 +17,14 @@
     cursor: pointer;
 }
 
-.auth-footer__link-container {
+.auth-submit__link-container {
     display: flex;
     justify-content: center;
     gap: 6px;
     margin-top: 16px;
 }
 
-.auth-footer__link-text {
+.auth-submit__link-text {
     font-size: 14px;
     font-weight: 400;
     line-height: 1.1;
@@ -32,7 +32,7 @@
     margin: 0;
 }
 
-.auth-footer__link {
+.auth-submit__link {
     color: #3456F3;
     text-decoration: none;
     font-size: 14px;
@@ -41,20 +41,26 @@
     cursor: pointer;
 }
 
+@media (max-width: 770px) {
+    .auth-submit {
+        padding-bottom: 232px;
+    }
+}
+
 @media (max-width: 550px) {
-    .auth-footer__button {
+    .auth-submit__button {
         width: 260px;
     }
-    .auth-footer {
+    .auth-submit {
         width: 260px;
     }
-    .auth-footer__link {
+    .auth-submit__link {
         font-size: 12px;
     }
-    .auth-footer__link-text {
+    .auth-submit__link-text {
         font-size: 12px;
     }
-    .auth-footer {
+    .auth-submit {
         padding: 157px 0 59px;
     }
 }

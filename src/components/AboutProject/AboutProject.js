@@ -2,7 +2,7 @@ import LandingSectionTitle from "../LandingSectionTitle/LandingSectionTitle";
 
 function AboutProject() {
     return (
-        <div className="about" id="about-project">
+        <section className="about" id="about-project">
             <LandingSectionTitle title={'О проекте'} />
             <div className="about__info-container">
                 <h3 className="about__info-title">Дипломный проект включал 5 этапов</h3>
@@ -16,7 +16,7 @@ function AboutProject() {
                 <p className="about__visual-caption">Back-end</p>
                 <p className="about__visual-caption">Front-end</p>
             </div>
-        </div>
+        </section>
     );
 }
 

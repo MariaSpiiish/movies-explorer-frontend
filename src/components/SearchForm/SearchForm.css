@@ -37,10 +37,13 @@
     font-size: 18px;
     line-height: 1.1;
     font-weight: 400;
+    width: 100%;
 }
 
 .search-form__input:focus {
+    border: 1px solid #3456F3;
     outline: none;
+    
 }
 
 .search-form__button {
@@ -83,7 +86,7 @@
         display: none;
     }
     .search-form__input {
-        padding-left: 19px;
+        margin-left: 19px;
         font-size: 14px;
         line-height: 1.4;
     }

@@ -3,12 +3,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 70px auto;
+    margin: 0 auto;
 }
-
+/* 
 @media (max-width: 770px) {
     .login {
-        margin: 232px auto;
+        margin: 0 auto;
     }
 }
 
@@ -16,4 +16,4 @@
     .login {
         margin: 56px auto 0;
     }
-}
+} */

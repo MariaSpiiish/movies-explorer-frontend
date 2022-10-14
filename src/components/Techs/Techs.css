@@ -52,7 +52,7 @@
     background-color: #E8E8E8;
 }
 
-@media (max-width: 770px) {
+@media (max-width: 820px) {
     .techs {
         padding-left: 50px;
         padding-right: 50px;
@@ -73,10 +73,11 @@
 
 }
 
-@media (max-width: 500px) {
+@media (max-width: 650px) {
     .techs {
         padding-left: 18px;
         padding-right: 18px;
+        background-color: #FFF;
     }
     .techs__info {
         width: 292px;

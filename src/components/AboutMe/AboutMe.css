@@ -6,6 +6,7 @@
 .about-me__student-info-container {
     display: flex;
     justify-content: space-between;
+    gap: 49px;
     margin-top: 66px;
     margin-bottom: 100px;
 }
@@ -94,6 +95,8 @@
     }
     .about-me__student-info-container {
         flex-direction: column;
+        align-items: center;
+        gap: 0;
     }
     .about-me__text-container {
         max-width: 292px;

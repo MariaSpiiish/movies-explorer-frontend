@@ -1,10 +1,8 @@
 import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
 
-function Profile({ onMenu }) {
+function Profile() {
     return (
-        <div className="profile">
-            <Header onMenu={onMenu}/>
+        <main className="profile">
             <h1 className="profile__title">Привет, Мария!</h1>
             <div className="profile__info-container">
                 <div className="profile__info-field">
@@ -20,7 +18,7 @@ function Profile({ onMenu }) {
                     <Link to="/" className="profile__link-back opacity">Выйти из аккаунта</Link>
                 </div>
             </div>
-        </div>
+        </main>
     )
 }
 

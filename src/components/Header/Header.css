@@ -1,6 +1,7 @@
 .header {
    display: flex;
    justify-content: space-between;
+   padding: 0 70px;
 }
 
 .header__menu-toggle {
@@ -59,7 +60,9 @@
 }
 
 @media (max-width: 770px) {
-   
+   .header {
+      padding: 0 30px;
+   }
    .header__links-container {
       display: none;
    }
@@ -74,6 +77,9 @@
 }
 
 @media (max-width: 500px) {
+   .header {
+      padding: 0 14px;
+   }
    .header__logo {
       margin-left: 14px;
    }

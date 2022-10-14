@@ -3,7 +3,7 @@ import { skills } from "../../utils/constants";
 
 function Techs() {
     return (
-        <div className="techs" id="tech">
+        <section className="techs" id="tech">
             <LandingSectionTitle title={'Технологии'} />
             <div className="techs__info-container">
                 <h3 className="techs__title">7 технологий</h3>
@@ -15,7 +15,7 @@ function Techs() {
                 ))
             }
             </ul>
-        </div>
+        </section>
     );
 }
 

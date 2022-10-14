@@ -11,9 +11,9 @@ function Promo() {
                     <li><Link to="/signin" className="promo-header__button promo-header__button_type_active opacity">Войти</Link></li>
                 </ul>
             </header>
-            <div className="promo">
+            <section className="promo">
                 <h1 className="promo__title">Учебный проект студента факультета Веб-разработки</h1>
-            </div>
+            </section>
         </>
     );
 }

@@ -1,16 +1,12 @@
-import Footer from "../Footer/Footer";
-import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies({ cards, onMenu}) {
+function SavedMovies({ cards }) {
     return (
-        <div className="movies">
-            <Header onMenu={onMenu}/>
+        <main className="movies">
             <SearchForm />
             <MoviesCardList cards={cards} />
-            <Footer />
-        </div>
+        </main>
 
     )
 }

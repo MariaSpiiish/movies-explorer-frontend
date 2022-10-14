@@ -10,6 +10,9 @@ import { getMovies } from '../../utils/Api';
 import SavedMovies from '../SavedMovies/SavedMovies';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import AuthHeader from '../AuthHeader/AuthHeader';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,8 +27,6 @@ function App() {
       })
   }, [])
 
-  // console.log(cards);
-
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
@@ -34,14 +35,42 @@ function App() {
     <div className="page-container">
       <div className="page">
         <Switch>
-          <Route exact path="/"><Main /></Route>
-          <Route path="/movies"><Movies cards={cards} onMenu={setIsMenuOpen}/></Route>
-          <Route path="/saved-movies"><SavedMovies cards={cards} onMenu={setIsMenuOpen}/></Route>
-          <Route path="/profile"><Profile onMenu={setIsMenuOpen}/></Route>
-          <Route path="/signin"><Login /></Route>
-          <Route path="/signup"><Register /></Route>
+          <Route exact path="/">
+            <Main />
+            <Footer />
+          </Route>
+
+          <Route path="/movies">
+            <Header onMenu={setIsMenuOpen}/>
+            <Movies cards={cards} />
+            <Footer />
+          </Route>
+
+          <Route path="/saved-movies">
+            <Header onMenu={setIsMenuOpen}/>
+            <SavedMovies cards={cards} />
+            <Footer />
+          </Route>
+
+          <Route path="/profile">
+            <Header onMenu={setIsMenuOpen}/>
+            <Profile />
+            <Footer />
+          </Route>
+
+          <Route path="/signin">
+            <AuthHeader title="Рады видеть!"/>
+            <Login />
+          </Route>
+
+          <Route path="/signup">
+            <AuthHeader title="Добро пожаловать!" />
+            <Register />
+          </Route>
+
           <Route path="*"><PageNotFound /></Route>
         </Switch>
+        
         <Navigation onClose={closeMenu} isOpen={isMenuOpen}/>
       </div>
     </div>

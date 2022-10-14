@@ -3,7 +3,7 @@ import photo from "../../images/profile-photo.jpg";
 
 function AboutMe() {
     return (
-        <div className="about-me" id="student">
+        <section className="about-me" id="student">
             <LandingSectionTitle title={'Студент'} />
             <div className="about-me__student-info-container">
                 <div className="about-me__text-container">
@@ -14,7 +14,7 @@ function AboutMe() {
                 </div>
                 <img className="about-me__pic" src={photo} alt="Фото профиля" />
             </div>
-        </div>
+        </section>
     );
 }
 

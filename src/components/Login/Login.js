@@ -1,14 +1,12 @@
-import AuthFooter from "../AuthFooter/AuthFooter";
-import AuthHeader from "../AuthHeader/AuthHeader";
 import Form from "../Form/Form";
+import AuthFooter from "../AuthSubmit/AuthSubmit";
 
 function Login() {
     return (
-        <div className="login">
-            <AuthHeader title="Рады видеть!"/>
+        <main className="login">
             <Form />
             <AuthFooter buttonText="Войти" linkQuestion="Ещё не зарегистрированы?" link="/signup" linkText="Регистрация"/>
-        </div>
+        </main>
     )
 }
 
