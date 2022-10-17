@@ -1,0 +1,19 @@
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+/* 
+@media (max-width: 770px) {
+    .login {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 550px) {
+    .login {
+        margin: 56px auto 0;
+    }
+} */
