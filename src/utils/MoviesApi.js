@@ -7,7 +7,7 @@ function handleResponse(res) {
     return Promise.reject(res.status);
 }
 
-export function getMovies() {
+export function getAllMovies() {
     return fetch(BASE_URL, {
         headers: {
           'Content-Type': 'application/json',

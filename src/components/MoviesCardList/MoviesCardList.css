@@ -16,6 +16,10 @@
     gap: 37px 24px;
 }
 
+.movies-list__not-found-message {
+    text-align: center;
+}
+
 @media (max-width: 1070px) {
     .movies-list__items {
         grid-template-columns: repeat(2, 1fr);
