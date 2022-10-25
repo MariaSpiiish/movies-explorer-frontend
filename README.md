@@ -4,6 +4,12 @@
 
 https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing
 
+Ссылка на PR:
+
+Ссылка на проект:
+
+http://movies-explorer.mlaps.nomoredomains.icu/
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -10,8 +10,8 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
     function handleSubmit(e) {
         e.preventDefault();
         history.location.pathname === '/signup' 
-            ? onRegister(values)
-            : onLogin(values)
+            ? onRegister(values.name, values.email, values.password)
+            : onLogin(values.email, values.password)
     }
 
     useEffect(() => {
@@ -30,8 +30,6 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
                             type="text"
                             minLength="2"
                             maxLength="40"
-                            pattern="[A-zА-я\s\-]/gi"
-                            title="Имя может состоять только из латиницы, кириллицы, пробела или дефиса"
                             required
                             placeholder="Имя"
                             className="form__input form__input_type_name"

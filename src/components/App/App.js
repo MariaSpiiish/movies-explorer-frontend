@@ -95,13 +95,11 @@ function App() {
     }
   }, [isLoggedIn, history, token]);
 
-  const handleRegistration = (data) => {
-    auth.register(data.email, data.password, data.name)
+  const handleRegistration = (name, email, password) => {
+    auth.register(name, email, password)
         .then((res) => {
             if(res) {
-              setRegistrationResult(true);
-              setIsLoggedIn(true);
-              history.push("/movies");
+              handleLogin(email, password);
             }
         })
         .catch((err) => {
@@ -110,13 +108,13 @@ function App() {
         });
   }
 
-  const handleLogin = (data) => {
-    auth.authorize(data.email, data.password)
+  const handleLogin = (email, password) => {
+    auth.authorize(email, password)
       .then((res) => {
           if (res.token){
               localStorage.setItem('token', res.token);
               setIsLoggedIn(true);
-              setUserEmail(data.email);
+              setUserEmail(email);
               history.push("/movies");
           }
       })

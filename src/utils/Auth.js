@@ -10,13 +10,13 @@ class Auth {
         return Promise.reject(res.status);
     }
 
-    register(email, password, name) {
+    register(name, email, password) {
         return fetch(`${this.url}/signup`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({email, password, name})
+            body: JSON.stringify({name, email, password})
         })
         .then(this._handleResponse)
     }
