@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../MoreButton/MoreButton";
 
-function MoviesCardList({ movies, notFoundMessage, onMovieAddRemove, isSaved }) {
+function MoviesCardList({ movies, notFoundMessage, onAdd, onRemove, savedMovies, savedTMPMovies }) {
     const [isButtonActive, setIsButtonActive] = useState(false);
     const [moviesToRender, setMoviesToRender] = useState([]);
     const [moviesToAddCount, setMoviesToAddCount] = useState(0);
@@ -25,13 +25,19 @@ function MoviesCardList({ movies, notFoundMessage, onMovieAddRemove, isSaved }) 
         countMovies();
     }, [display])
 
+    console.log(movies)
+
     useEffect(() => {
-        setMoviesToRender(movies.slice(0, movieCount));
-          if (movies.length <= movieCount) {
-            setIsButtonActive(false);
-          } else {
-            setIsButtonActive(true);
-          }
+        if (movies === null) {
+            setMoviesToRender([]);
+        } else {
+            setMoviesToRender(movies.slice(0, movieCount));
+            if (movies.length <= movieCount) {
+                setIsButtonActive(false);
+            } else {
+                setIsButtonActive(true);
+            }
+        }
     }, [movies, movieCount]);
 
     const renderMoreMovies = () => {
@@ -43,8 +49,6 @@ function MoviesCardList({ movies, notFoundMessage, onMovieAddRemove, isSaved }) 
 
     return (
         <section className="movies-list">
-            {movies.length === 0 ?
-                <p className="movies-list__not-found-message">{notFoundMessage}</p> :
                 <ul className="movies-list__items">
                     {moviesToRender.map((movie) => (
                         <MoviesCard 
@@ -54,13 +58,14 @@ function MoviesCardList({ movies, notFoundMessage, onMovieAddRemove, isSaved }) 
                             name={movie.nameRU}
                             duration={movie.duration}
                             trailerLink={movie.trailerLink}
-                            onMovieAddRemove={onMovieAddRemove}
+                            onAdd={onAdd}
+                            onRemove={onRemove}
                             movie={movie}
-                            isSaved={isSaved}
+                            savedMovies={savedMovies}
+                            savedTMPMovies={savedTMPMovies}
                         />
                     ))}
                 </ul>
-            }
             {isButtonActive && <MoreButton onClick={renderMoreMovies}/>}
         </section>
     )

@@ -13,8 +13,8 @@ function Register({registrationResult, onRegister}) {
                     linkQuestion="Уже зарегистрированы?"
                     link="/signin"
                     linkText="Войти"
+                    registrationResult={registrationResult}
                 />
-                {!registrationResult && <p>Во время регистрации произошла ошибка</p>}
             </>
         </main>
          

@@ -1,46 +1,25 @@
-import { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
 import { CurrentUserContext } from '../../context/CurrentUserContext';
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, userEmail, userName }) {
+function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, onLogout }) {
     const currentUser = useContext(CurrentUserContext);
-    const history = useHistory();
-    const { values, handleChange, errors, isValid } = useFormWithValidation();
-    const [isActive, setIsActive] = useState(false);
+    const { values, setValues, handleChange, errors, isValid, setIsValid } = useFormWithValidation();
 
     useEffect(() => {
-        values.name = currentUser.name;
-        values.email = currentUser.email;
-      }, [currentUser]); 
+        setValues(currentUser);
+        setIsValid(true);
+      }, [currentUser, setValues, setIsValid]);
 
     function handleSubmit(e) {
         e.preventDefault();
-        
-        // Передаём значения управляемых компонентов во внешний обработчик
-        onUpdateUser(values);
-        setIsActive(false);
+        onUpdateUser(values.name, values.email);
     }
 
-    function checkNameValue(e) {
-        handleChange(e);
-        if (values.name !== currentUser.name) {
-            setIsActive(true);
-        }
+    function handleExitClick(e) {
+        e.preventDefault();
+        onLogout();
     }
-
-    function checkEmailValue(e) {
-        handleChange(e);
-        if (values.email !== currentUser.email) {
-            setIsActive(true);
-        }
-    }
-
-    function handleExitClick() {
-        localStorage.removeItem('token');
-        history.push("/");
-    }
-    
 
     return (
         <main className="profile">
@@ -56,8 +35,8 @@ function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, userEmail
                         maxLength="40"
                         placeholder="Имя"
                         name="name"
-                        onChange={checkNameValue}
-                        value={values.name || userName}
+                        onChange={handleChange}
+                        value={values.name || ''}
                     />
                 </div>
                 <span className="name-input-error form__error">{errors.name}</span>
@@ -71,8 +50,8 @@ function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, userEmail
                         maxLength="40"
                         placeholder="Email"
                         name="email"
-                        onChange={checkEmailValue}
-                        value={values.email || userEmail}
+                        onChange={handleChange}
+                        value={values.email || ''}
                     />
                 </div>
                 <span className="email-input-error form__error">{errors.email}</span>
@@ -80,7 +59,13 @@ function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, userEmail
                 {isEditUserSuccessful && <p>Данные успешно обновлены.</p>}
                 {isEditUserFail && <p>Произошла ошибка. Попробуйте еще раз.</p>}
                 <div className="profile__buttons">
-                    <button type="submit" disabled={(!isValid && isActive === false) && true} className={(!isValid && isActive === false) ? "profile__edit-button" : "profile__edit-button profile__edit-button_type_active"}>Редактировать</button>
+                    <button 
+                        type="submit" 
+                        disabled={(values.name === currentUser.name && values.email === currentUser.email) || !isValid}
+                        className={(isValid && (values.name !== currentUser.name || values.email !== currentUser.email))
+                            ? "profile__edit-button profile__edit-button_type_active"
+                            : "profile__edit-button"}
+                    >Редактировать</button>
                     <button type="button" onClick={handleExitClick} className="profile__exit-link opacity">Выйти из аккаунта</button>
                 </div>
             </form>

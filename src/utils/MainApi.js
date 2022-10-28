@@ -18,7 +18,7 @@ export function getUserInfo(token) {
       .then(handleResponse)
 }
 
-export function patchUserInfo(data) {
+export function patchUserInfo(name, email) {
   return fetch(`${BASE_URL}/users/me`, {
     method: 'PATCH',
     headers: {
@@ -26,7 +26,10 @@ export function patchUserInfo(data) {
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({
+      name,
+      email
+    })
   })
   .then(handleResponse)
 }

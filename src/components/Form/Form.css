@@ -45,11 +45,19 @@
     left: 36px; */
 }
 
+.form__registration-error {
+    width: 396px;
+    white-space: pre-line;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
 @media (max-width: 550px) {
-    .form {
+    .form, .form__registration-error{
         width: 260px;
     }
-    .form__input {
+    .form__input, .form__registration-error {
         width: 260px;
     }
 }

@@ -1,12 +1,36 @@
+import { useEffect } from "react";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import SearchForm from "../SearchForm/SearchForm";
 
-function SavedMovies({ movies, onMovieAddRemove, isSaved, onSearch, isLoading, loadingError, notFoundMessage }) {
+function SavedMovies({ 
+    movies,
+    onRemove,
+    savedMovies,
+    onSearch,
+    isLoading,
+    loadingError,
+    notFoundMessage,
+    prevCheckboxState,
+    prevSearchQuery,
+    saveMovies,
+    isLoggedIn,
+    setNotFoundMessage,
+    savedTMPMovies
+    }) {
+
+        useEffect(() => {
+            if(isLoggedIn) {
+                saveMovies();
+                setNotFoundMessage('')
+            }
+        }, [isLoggedIn])
+        
     return (
         <main className="movies">
-            <SearchForm onSearch={onSearch}/>
-            <MoviesCardList movies={movies} onMovieAddRemove={onMovieAddRemove} isSaved={isSaved} notFoundMessage={notFoundMessage}/>
+            <SearchForm onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
+            <MoviesCardList movies={movies} onRemove={onRemove} savedMovies={savedMovies} notFoundMessage={notFoundMessage} savedTMPMovies={savedTMPMovies}/>
             {loadingError && <div>{loadingError}</div>}
+            {notFoundMessage && <p>{notFoundMessage}</p>}
         </main>
 
     )

@@ -1,30 +1,40 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import searchIcon from "../../images/search-icon.svg";
-import { useEffect, useState } from "react";
-import useFormWithValidation from "../../hooks/useFormWithValidation";
+import { useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function SearchForm({ onSearch }) {
-    const [checked, setChecked] = useState(true);
 
-    const { values, handleChange, resetForm } = useFormWithValidation();
+function SearchForm({ onSearch, prevCheckboxState, prevSearchQuery }) {
+    const location = useLocation();
+
+    const [checked, setChecked] = useState(location.pathname === '/movies' ? prevCheckboxState : false);
+    const [query, setQuery] = useState(location.pathname === '/movies' ? prevSearchQuery : '');
 
     const [error, setError] = useState('');
 
+    const handleQuery = (evt) => {
+        setQuery(evt.target.value)
+    }
+   
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        if (!values.query) {
+        if (!query) {
             setError('Необходимо ввести ключевое слово')
         } else {
-            onSearch(values.query, checked);
-            resetForm();
+            onSearch(query, checked);
             setError('');
         }
     }
 
-    useEffect(() => {
-        resetForm();
-    }, [resetForm])
-
+    const handleToggle = () => {
+        if (!query) {
+            setError('Необходимо ввести ключевое слово')
+        } else {
+        setChecked(!checked);
+        onSearch(query, !checked);
+        }
+    }
+    
     return (
         <section className="search-form">
             <form className="search-form__container" noValidate onSubmit={handleSubmit}>
@@ -36,8 +46,8 @@ function SearchForm({ onSearch }) {
                         placeholder="Фильм"
                         required
                         name="query"
-                        value={values.query || ''}
-                        onChange={handleChange}
+                        value={query || ''}
+                        onChange={handleQuery}
                     />
                     {error && <span className="search-form__error">{error}</span>}
                 </div>
@@ -46,7 +56,7 @@ function SearchForm({ onSearch }) {
             </form>
             <FilterCheckbox 
                 isOn={checked}
-                handleToggle={() => setChecked(!checked)}
+                handleToggle={handleToggle}
                 colorOne="#2BE080"
                 colorTwo="#EBEBEB"
             />

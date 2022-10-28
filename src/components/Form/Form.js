@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import useFormWithValidation from "../../hooks/useFormWithValidation";
 import AuthSubmit from "../AuthSubmit/AuthSubmit";
 
 function Form({ onRegister, formId, onLogin, registrationResult, buttonText, linkQuestion, link, linkText }) {
-    const { values, errors, isValid, handleChange, resetForm } = useFormWithValidation();
-    const history = useHistory();
+    const { values, errors, isValid, handleChange, resetForm, setIsValid } = useFormWithValidation();
+    const location = useLocation();
 
     function handleSubmit(e) {
         e.preventDefault();
-        history.location.pathname === '/signup' 
+        setIsValid(false);
+        location.pathname === '/signup' 
             ? onRegister(values.name, values.email, values.password)
             : onLogin(values.email, values.password)
     }
@@ -21,7 +22,7 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
     return (
         <section>
             <form id={formId} className="form" onSubmit={handleSubmit}>
-                {history.location.pathname === '/signup' && 
+                {location.pathname === '/signup' && 
                     <>
                         <label htmlFor="name-input" className="form__label">Имя</label>
                         <input 
@@ -35,6 +36,7 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
                             className="form__input form__input_type_name"
                             values={values.name || ''}
                             onChange={handleChange}
+                            autoComplete="off"
                         />
                     </>   
                 }
@@ -45,10 +47,12 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
                     id="email-input"
                     type="email"
                     required
-                    placeholder="Email" 
+                    placeholder="Email"
+                    pattern="\S+@\S+\.\S+"
                     className="form__input form__input_type_email"
                     values={values.email || ''}
                     onChange={handleChange}
+                    autoComplete="off"
                 />
                 <span id="email-error" className="email-input-error form__error">{errors.email}</span>
                 <label htmlFor="password-input" className="form__label">Пароль</label>
@@ -63,9 +67,11 @@ function Form({ onRegister, formId, onLogin, registrationResult, buttonText, lin
                     className="form__input form__input_type_password"
                     values={values.password || ''}
                     onChange={handleChange}
+                    autoComplete="off"
                 />
                 <span id="password-error" className="password-input-error form__error">{errors.password}</span>
             </form>
+            {<p className="form__registration-error">{registrationResult}</p>}
             <AuthSubmit isValid={isValid} formId={formId} buttonText={buttonText} linkQuestion={linkQuestion} link={link} linkText={linkText}/>
         </section>
 

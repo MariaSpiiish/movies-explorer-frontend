@@ -2,14 +2,31 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Preloader from "../Preloader/Preloader";
 
-function Movies({ movies, onSearch, isLoading, loadingError, notFoundMessage, onMovieAddRemove, isSaved }) {
+function Movies({
+    movies,
+    onSearch,
+    isLoading,
+    loadingError,
+    notFoundMessage,
+    onAdd,
+    onRemove,
+    savedMovies,
+    prevCheckboxState,
+    prevSearchQuery,
+    movieLikeError,
+    savedTMPMovies
+}) {
     return (
         <main className="movies">
-            <SearchForm onSearch={onSearch}/>
+            <SearchForm onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
 
-            {isLoading ? <Preloader /> : <MoviesCardList isSaved={isSaved} onMovieAddRemove={onMovieAddRemove} movies={movies} notFoundMessage={notFoundMessage}/>}
+            {isLoading ? <Preloader /> : <MoviesCardList savedTMPMovies={savedTMPMovies} savedMovies={savedMovies} onAdd={onAdd} onRemove={onRemove} movies={movies} notFoundMessage={notFoundMessage}/>}
 
             {loadingError && <div>{loadingError}</div>}
+
+            {notFoundMessage && <p>{notFoundMessage}</p>}
+
+            {movieLikeError && <p>{movieLikeError}</p>}
             
         </main>
     );
