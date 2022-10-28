@@ -7,7 +7,6 @@ function SavedMovies({
     onRemove,
     savedMovies,
     onSearch,
-    isLoading,
     loadingError,
     notFoundMessage,
     prevCheckboxState,

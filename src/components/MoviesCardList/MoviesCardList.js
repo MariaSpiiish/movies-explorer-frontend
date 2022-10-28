@@ -25,8 +25,6 @@ function MoviesCardList({ movies, notFoundMessage, onAdd, onRemove, savedMovies,
         countMovies();
     }, [display])
 
-    console.log(movies)
-
     useEffect(() => {
         if (movies === null) {
             setMoviesToRender([]);

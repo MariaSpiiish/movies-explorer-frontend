@@ -349,7 +349,6 @@ function App() {
               onRemove={handleMovieDelete}
               savedMovies={savedMovies}
               onSearch={handleSavedMoviesSearch}
-              isLoading={isLoading}
               notFoundMessage={notFoundMessage}
               prevCheckboxState={prevCheckboxState}
               prevSearchQuery={prevSearchQuery}
