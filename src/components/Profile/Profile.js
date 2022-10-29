@@ -37,6 +37,7 @@ function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, onLogout 
                         name="name"
                         onChange={handleChange}
                         value={values.name || ''}
+                        autoComplete="off"
                     />
                 </div>
                 <span className="name-input-error form__error">{errors.name}</span>
@@ -50,8 +51,10 @@ function Profile({ onUpdateUser, isEditUserSuccessful, isEditUserFail, onLogout 
                         maxLength="40"
                         placeholder="Email"
                         name="email"
+                        pattern="\S+@\S+\.\S+"
                         onChange={handleChange}
                         value={values.email || ''}
+                        autoComplete="off"
                     />
                 </div>
                 <span className="email-input-error form__error">{errors.email}</span>

@@ -26,7 +26,7 @@ function SavedMovies({
         
     return (
         <main className="movies">
-            <SearchForm onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
+            <SearchForm loggedIn={isLoggedIn} onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
             <MoviesCardList movies={movies} onRemove={onRemove} savedMovies={savedMovies} notFoundMessage={notFoundMessage} savedTMPMovies={savedTMPMovies}/>
             {loadingError && <div>{loadingError}</div>}
             {notFoundMessage && <p>{notFoundMessage}</p>}

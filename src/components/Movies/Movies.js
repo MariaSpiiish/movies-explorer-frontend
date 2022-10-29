@@ -14,11 +14,12 @@ function Movies({
     prevCheckboxState,
     prevSearchQuery,
     movieLikeError,
-    savedTMPMovies
+    savedTMPMovies,
+    isLoggedIn
 }) {
     return (
         <main className="movies">
-            <SearchForm onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
+            <SearchForm loggedIn={isLoggedIn} onSearch={onSearch} prevCheckboxState={prevCheckboxState} prevSearchQuery={prevSearchQuery}/>
 
             {isLoading ? <Preloader /> : <MoviesCardList savedTMPMovies={savedTMPMovies} savedMovies={savedMovies} onAdd={onAdd} onRemove={onRemove} movies={movies} notFoundMessage={notFoundMessage}/>}
 

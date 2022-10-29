@@ -1,14 +1,24 @@
 import FilterCheckbox from "../FilterCheckbox/FilterCheckbox";
 import searchIcon from "../../images/search-icon.svg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
 
-function SearchForm({ onSearch, prevCheckboxState, prevSearchQuery }) {
+function SearchForm({ onSearch, prevCheckboxState, prevSearchQuery, loggedIn }) {
     const location = useLocation();
 
     const [checked, setChecked] = useState(location.pathname === '/movies' ? prevCheckboxState : false);
     const [query, setQuery] = useState(location.pathname === '/movies' ? prevSearchQuery : '');
+
+    useEffect(() => {
+        if (location.pathname === '/movies') {
+            setChecked(prevCheckboxState);
+            setQuery(prevSearchQuery);
+        } else {
+            setChecked(false);
+            setQuery('');
+        }
+    }, [loggedIn])
 
     const [error, setError] = useState('');
 

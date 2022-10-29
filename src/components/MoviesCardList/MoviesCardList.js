@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../MoreButton/MoreButton";
 
-function MoviesCardList({ movies, notFoundMessage, onAdd, onRemove, savedMovies, savedTMPMovies }) {
+function MoviesCardList({ movies, onAdd, onRemove, savedMovies, savedTMPMovies }) {
     const [isButtonActive, setIsButtonActive] = useState(false);
     const [moviesToRender, setMoviesToRender] = useState([]);
     const [moviesToAddCount, setMoviesToAddCount] = useState(0);
@@ -23,7 +23,7 @@ function MoviesCardList({ movies, notFoundMessage, onAdd, onRemove, savedMovies,
             }
         }
         countMovies();
-    }, [display])
+    }, [])
 
     useEffect(() => {
         if (movies === null) {

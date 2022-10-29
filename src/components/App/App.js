@@ -52,13 +52,13 @@ function App() {
         const token = localStorage.getItem('token');
         if(token) {
           auth.getToken(token)
-            .then((res) => {
+            .then(() => {
               setIsLoggedIn(true);
+              console.log("blabla")
             })
             .catch((err) => {
-              localStorage.removeItem('token')
+              handleLogout();
               console.log(`Что-то не так с токеном: ${err}`);
-              history.push('/');
             });
         }
     }
@@ -68,7 +68,6 @@ function App() {
   function saveMovies() {
     getSavedMovies(token)
       .then((movies) => {
-        localStorage.setItem('savedMovies', JSON.stringify(movies))
         setSavedMovies(movies);
         setSavedTMPMovies(movies);
       })
@@ -88,31 +87,31 @@ function App() {
 
   }, [isLoggedIn, token])
 
-  useEffect(() => {
-    if(isLoggedIn) {
-      getAllMovies()
-        .then((allmovies) => {
-          const movies = allmovies.map((movie) => {
-            return {
-              country: movie.country,
-              director: movie.director,
-              duration: movie.duration,
-              year: movie.year,
-              description: movie.description,
-              image: `https://api.nomoreparties.co${movie.image.url}`,
-              trailerLink: movie.trailerLink,
-              thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
-              movieId: movie.id,
-              nameRU: movie.nameRU,
-              nameEN: movie.nameEN,
-            }
-          })
-          localStorage.setItem('allMovies', JSON.stringify(movies));
-          setAllMovies(movies);
-        })
-        .catch(err => console.log(err))
-      }
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   if(isLoggedIn) {
+  //     getAllMovies()
+  //       .then((allmovies) => {
+  //         const movies = allmovies.map((movie) => {
+  //           return {
+  //             country: movie.country,
+  //             director: movie.director,
+  //             duration: movie.duration,
+  //             year: movie.year,
+  //             description: movie.description,
+  //             image: `https://api.nomoreparties.co${movie.image.url}`,
+  //             trailerLink: movie.trailerLink,
+  //             thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+  //             movieId: movie.id,
+  //             nameRU: movie.nameRU,
+  //             nameEN: movie.nameEN,
+  //           }
+  //         })
+  //         localStorage.setItem('allMovies', JSON.stringify(movies));
+  //         setAllMovies(movies);
+  //       })
+  //       .catch(err => console.log(err))
+  //     }
+  // }, [isLoggedIn])
 
   const handleRegistration = (name, email, password) => {
     auth.register(name, email, password)
@@ -159,11 +158,12 @@ function App() {
       
       if (checked) {
         const shortMovies = filteredData.filter((item) => item.duration <= 40);
+        if (shortMovies.length === 0) {
+          setNotFoundMessage('Ничего не найдено');
+        }
         return shortMovies;
-      } else {
-        const longMovies = filteredData.filter((item) => item.duration >= 40);
-        return longMovies;
-      }
+      } 
+        return filteredData;
     } 
     return [];
   };
@@ -195,11 +195,11 @@ function App() {
           })
           localStorage.setItem('allMovies', JSON.stringify(movies));
           setAllMovies(movies);
-          setTimeout(() => {
-            setFilteredMovies(filterMovies(allMovies, searchQuery, checked));
-            localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies)); 
-            setIsLoading(false);
-          }, 600);
+          const allm = JSON.parse(localStorage.getItem("allMovies"))
+          setFilteredMovies(filterMovies(allm, searchQuery, checked));
+          localStorage.setItem("filteredMovies", JSON.stringify(filteredMovies)); 
+          setIsLoading(false);
+          
         })
         .catch((err) => {
           setLoadingError('Во время запроса произошла ошибка. \n Возможно, проблема с соединением или сервер недоступен. \n Подождите немного и попробуйте ещё раз');
@@ -237,7 +237,7 @@ function App() {
         let boolOutput = myString.toLowerCase() === 'true' ? true : false;
         setPrevCheckboxState(boolOutput);
       }
-  }, [location])
+  }, [location, isLoggedIn])
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -296,6 +296,7 @@ function App() {
     localStorage.removeItem('filteredMovies');
     localStorage.removeItem('checkbox');
     localStorage.removeItem('searchQuery');
+    localStorage.removeItem('savedMovies');
     setIsLoggedIn(false);
     setCurrentUser({});
     setPrevCheckboxState(false);
