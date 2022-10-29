@@ -54,7 +54,6 @@ function App() {
           auth.getToken(token)
             .then(() => {
               setIsLoggedIn(true);
-              console.log("blabla")
             })
             .catch((err) => {
               handleLogout();
