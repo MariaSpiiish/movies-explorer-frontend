@@ -20,7 +20,7 @@ function MoviesCard({ image, name, duration, trailerLink, onAdd, onRemove, movie
 
     function handleDelete () {
         setIsLiked(false)
-        onRemove(movie); 
+        onRemove(movie, setIsLiked); 
     }
 
     function handleClick() {

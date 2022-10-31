@@ -86,32 +86,6 @@ function App() {
 
   }, [isLoggedIn, token])
 
-  // useEffect(() => {
-  //   if(isLoggedIn) {
-  //     getAllMovies()
-  //       .then((allmovies) => {
-  //         const movies = allmovies.map((movie) => {
-  //           return {
-  //             country: movie.country,
-  //             director: movie.director,
-  //             duration: movie.duration,
-  //             year: movie.year,
-  //             description: movie.description,
-  //             image: `https://api.nomoreparties.co${movie.image.url}`,
-  //             trailerLink: movie.trailerLink,
-  //             thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
-  //             movieId: movie.id,
-  //             nameRU: movie.nameRU,
-  //             nameEN: movie.nameEN,
-  //           }
-  //         })
-  //         localStorage.setItem('allMovies', JSON.stringify(movies));
-  //         setAllMovies(movies);
-  //       })
-  //       .catch(err => console.log(err))
-  //     }
-  // }, [isLoggedIn])
-
   const handleRegistration = (name, email, password) => {
     auth.register(name, email, password)
         .then((res) => {
@@ -252,18 +226,22 @@ function App() {
     
     postSavedMovie(movie)
       .then((res) => {
+        setMovieLikeError('');
         setSavedMovies([...savedMovies, {...res}]);
         setSavedTMPMovies([...savedTMPMovies, {...res}])
       })
       .catch((err) => {
+        setMovieLikeError('Не удаётся сохранить этот фильм. Возможно, что-то не так с сервером. Повторите попытку позже.');
+        setIsLiked(false);
         console.log(`Ошибка в постановке лайка: ${err}`);
       });
   }
 
-  function handleMovieDelete(movie) {
+  function handleMovieDelete(movie, setIsLiked) {
     const movieId = savedTMPMovies.find((item) => item.movieId === movie.movieId)._id;
     deleteSavedMovie(movieId)
       .then((res) => {
+        setMovieLikeError('');
         setSavedMovies(stateMovies => stateMovies.filter((m) => {
           return m.movieId !== movie.movieId
         }))
@@ -272,7 +250,9 @@ function App() {
         }))
       })
       .catch((err) => {
-        console.log(`Ошибка в постановке лайка: ${err}`);
+        setMovieLikeError('Не удаётся удалить этот фильм. Возможно, что-то не так с сервером. Повторите попытку позже.');
+        setIsLiked(true);
+        console.log(`Ошибка в снятии лайка: ${err}`);
       });
   }
 

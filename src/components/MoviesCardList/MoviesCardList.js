@@ -7,14 +7,15 @@ function MoviesCardList({ movies, onAdd, onRemove, savedMovies, savedTMPMovies }
     const [moviesToRender, setMoviesToRender] = useState([]);
     const [moviesToAddCount, setMoviesToAddCount] = useState(0);
     const [movieCount, setMovieCount] = useState(0);
+    
     let display = window.innerWidth;
-
+    
     useEffect(() => {
         function countMovies() {
-            if (display > 1070) {
+            if (display >= 1070) {
                 setMovieCount(12);
                 setMoviesToAddCount(3);
-            } else if (display > 600) {
+            } else if (display >= 600) {
                 setMovieCount(8);
                 setMoviesToAddCount(2);
             } else if (display < 600) {
@@ -39,7 +40,26 @@ function MoviesCardList({ movies, onAdd, onRemove, savedMovies, savedTMPMovies }
     }, [movies, movieCount]);
 
     const renderMoreMovies = () => {
-        setMoviesToRender(movies.slice(0, moviesToRender.length + moviesToAddCount))
+        display = window.innerWidth;
+        
+        if (display >= 1070) {
+            if (Math.round((moviesToRender.length % 3) === 1)) {
+                setMoviesToRender(movies.slice(0, moviesToRender.length + 2));
+            } else if (Math.round((moviesToRender.length % 3) === 2)) {
+                setMoviesToRender(movies.slice(0, moviesToRender.length + 1));
+            } else {
+                setMoviesToRender(movies.slice(0, moviesToRender.length + 3));
+            }
+        } else if (display < 1070 && display > 600) {
+            if (Math.round((moviesToRender.length % 2) !== 0)) {
+                setMoviesToRender(movies.slice(0, moviesToRender.length + 1))
+            } else {
+                setMoviesToRender(movies.slice(0, moviesToRender.length + 2));
+            }       
+        } else {
+            setMoviesToRender(movies.slice(0, moviesToRender.length + 2));
+        }
+        
         if (moviesToRender.length >= movies.length - moviesToAddCount) {
             setIsButtonActive(false);
         }
