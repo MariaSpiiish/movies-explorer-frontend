@@ -7,6 +7,7 @@
     height: 70px;
     margin-top: 70px;
     margin-bottom: 80px;
+    
 }
 
 .search-form__container {
@@ -21,6 +22,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    position: relative;
 }
 
 .search-form__icon {
@@ -64,6 +66,16 @@
     cursor: pointer;
     
 
+}
+
+.search-form__error {
+    color: #2BE080;
+    position: absolute;
+    bottom: -50px;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.1;
 }
 
 

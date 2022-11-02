@@ -32,12 +32,13 @@
 
 .not-found__link-back {
     color: #3456F3;
-    text-decoration: none;
     cursor: pointer;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.2;
     margin-top: 184px;
+    border: none;
+    background-color: transparent;
 }
 
 @media (max-width: 500px) {

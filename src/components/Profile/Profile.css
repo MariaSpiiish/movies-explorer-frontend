@@ -45,6 +45,16 @@
     margin: 0;
 }
 
+.profile__input {
+    text-align: end;
+    border: none;
+}
+
+.profile__input:focus {
+    outline: none;
+    border-bottom: 1px solid #2BE080;
+}
+
 .profile__info-content:first-child {
     font-weight: 500;
 }
@@ -56,15 +66,22 @@
     padding: 0;
     background-color: transparent;
     border: none;
-    cursor: pointer;
 }
 
-.profile__link-back {
+.profile__edit-button_type_active {
+    cursor: pointer;
+    color: #2BE080;
+}
+
+.profile__exit-link {
     font-size: 13px;
     line-height: 1.1;
     font-weight: 500;
     text-decoration: none;
     color: #FF3055;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 @media (max-width: 770px) {

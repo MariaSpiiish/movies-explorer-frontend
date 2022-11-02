@@ -1,11 +1,21 @@
 import Form from "../Form/Form";
-import AuthFooter from "../AuthSubmit/AuthSubmit";
+import AuthHeader from "../AuthHeader/AuthHeader";
 
-function Register() {
+function Register({registrationResult, onRegister}) {
     return (
         <main className="register">
-            <Form />
-            <AuthFooter buttonText="Зарегистрироваться" linkQuestion="Уже зарегистрированы?" link="/signin" linkText="Войти"/>
+            <>
+                <AuthHeader title="Добро пожаловать!" />
+                <Form 
+                    formId="register"
+                    onRegister={onRegister}
+                    buttonText="Зарегистрироваться"
+                    linkQuestion="Уже зарегистрированы?"
+                    link="/signin"
+                    linkText="Войти"
+                    registrationResult={registrationResult}
+                />
+            </>
         </main>
          
     )
