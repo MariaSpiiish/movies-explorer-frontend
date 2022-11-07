@@ -1,4 +1,4 @@
-## Movies explorer. Дипломный проект. Фронтенд.
+# Movies explorer. Дипломный проект. Фронтенд.
 
 Проект представляет собой одностраничное React приложение с функционалом регистрации и авторизации пользователя. Верстка по макету на Figma.
 
@@ -9,15 +9,15 @@
 * удалять фильм из сохраненных кликом на лайк или кликом на крестик на странице *Сохраненные фильмы*
 * редактировать данные профиля
 
-# Demo
+## Demo
 
 [Ссылка на проект](http://movies-explorer.mlaps.nomoredomains.icu/)
   
-# Figma:  
+## Figma:  
 
 [Ссылка на макет](https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing)
 
-# Технологии
+## Технологии
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -25,7 +25,7 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-# Scripts
+## Scripts
 
 При первом запуске проекта
 
