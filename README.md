@@ -1,42 +1,34 @@
-# movies-explorer-frontend  
+## Movies explorer. Дипломный проект. Фронтенд.
+
+Проект представляет собой одностраничное React приложение с функционалом регистрации и авторизации пользователя. Верстка по макету на Figma.
+
+Авторизованный пользователь может совершать следующие действия:
+* совершать поиск по базе фильмов
+* в поиске могут быть отфильтрованы только короткометражные фильмы
+* добавлять фильм на страницу *Сохраненные фильмы* кликом на лайк
+* удалять фильм из сохраненных кликом на лайк или кликом на крестик на странице *Сохраненные фильмы*
+* редактировать данные профиля
+
+# Demo
+
+[Ссылка на проект](http://movies-explorer.mlaps.nomoredomains.icu/)
   
-Макет на Фигма:  
+# Figma:  
 
-https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing
+[Ссылка на макет](https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing)
 
-Ссылка на PR:
+# Технологии
 
-https://github.com/MariaSpiiish/movies-explorer-frontend/pull/2
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-Ссылка на проект:
+# Scripts
 
-http://movies-explorer.mlaps.nomoredomains.icu/
+При первом запуске проекта
 
-## Available Scripts
+* `npm install` - установить все зависимости
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-
+`npm start` - запускает приложение
