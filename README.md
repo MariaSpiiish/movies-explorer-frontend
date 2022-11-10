@@ -9,6 +9,9 @@
 * удалять фильм из сохраненных кликом на лайк или кликом на крестик на странице *Сохраненные фильмы*
 * редактировать данные профиля
 
+## Demo
+[Ссылка на приложение](http://movies-explorer.mlaps.nomoredomains.icu/)
+
 ## Figma:  
 
 [Ссылка на макет](https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing)
