@@ -17,9 +17,6 @@
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
-## Demo
-[Ссылка на приложение](http://movies-explorer.mlaps.nomoredomains.icu/)
-
 ## Figma:  
 
 [Ссылка на макет](https://drive.google.com/file/d/1DMpfa1ar4ALOA4OCiTrIztWsHPufLTFd/view?usp=sharing)
